@@ -11,7 +11,7 @@ Behind the scenes, you can find these elements:
 - the response is parsed into small items. I could have used some big mapping framework like RestKit but iTunes items are so simple that wasn't worth it.
 - every item is represented by a NSDictionary and every interesting property is made accessible via a readonly native method
 - to persist the bookmarks, Magical Record is used (getting rid of all Core Data boilerplate code). The Core Data entry is simply made by an ID, a timestamp and a transformable object with the full dictionary (since I don't need to query Core Data for more info, I just want to list everything out sorted by date of insertion, descending).
-- a table view controller list everything out. The same view controller is used for both query and bookmarks views.
+- a table view controller lists everything out. The same view controller is used for both query and bookmarks views.
 - the view model binds everything together. It acts like a bridge between view(controller) and model, so that every possible change that could be made on a single property of a model item is observed and updated if needed in the view. On top of that, the whole datasource get destroyed and rebuilt every time a new query gets executed.
 - SDWebImage is used to manage remote image downloads. It gets transformed into a RACSignal and binded to every single element in the list.
 
